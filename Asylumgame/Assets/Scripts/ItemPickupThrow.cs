@@ -6,7 +6,7 @@ using UnityEngine;
 public class ItemPickupThrow : MonoBehaviour
 {
     public Camera fpsCam;
-    public ItemScript Item;
+    //public ItemScript ItemPick;
 
     public int range = 100;
 
@@ -42,8 +42,18 @@ public class ItemPickupThrow : MonoBehaviour
         Debug.DrawRay(fpsCam.ScreenPointToRay(Input.mousePosition).origin, fpsCam.ScreenPointToRay(Input.mousePosition).direction * range, Color.yellow, 10);
         if (Physics.Raycast(origin, direction, out hit, range, layerMask))
         {
-            Item = hit.collider.GetComponent<ItemScript>();
-            Item.picked = true;
+            if (hit.transform.CompareTag("Consumable"))
+            {
+                //do something
+            }
+            else if (hit.transform.CompareTag("Holdable"))
+            {
+                //full pickup
+
+                //ItemPick = hit.collider.GetComponent;
+                //hit.Bottle.transform.parent = .Hand...;
+                // 
+            }
         }
     }
 

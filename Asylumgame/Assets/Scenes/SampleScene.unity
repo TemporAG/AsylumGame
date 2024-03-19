@@ -321,12 +321,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fpsCam: {fileID: 330585545}
-  Item: {fileID: 0}
   range: 100
   PickupRate: 10
   layerMask:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 384
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -538,8 +537,8 @@ GameObject:
   - component: {fileID: 964718362}
   - component: {fileID: 964718361}
   - component: {fileID: 964718364}
-  m_Layer: 7
-  m_Name: Cube
+  m_Layer: 8
+  m_Name: Bottle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -553,7 +552,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 964718359}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.586, y: 1.23, z: 2.106}
+  m_LocalPosition: {x: 0.586, y: 1.23, z: 3.32}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -643,6 +642,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb19829eb776ba748b85fd5c1ee260d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pickThrow: {fileID: 0}
   picked: 0
 --- !u!1 &1222150854
 GameObject:
