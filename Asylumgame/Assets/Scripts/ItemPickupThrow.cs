@@ -10,9 +10,9 @@ public class ItemPickupThrow : MonoBehaviour
     public GameObject player;
     public Transform holdPos;
 
-    public float range = 1.9f;
+    public float range = 2.1f;
     public float throwForce = 500f;
-    public float pickUpRange = 1.9f;
+    public float pickUpRange = 2.1f;
 
     private GameObject heldObj;
     private Rigidbody heldObjRb;
