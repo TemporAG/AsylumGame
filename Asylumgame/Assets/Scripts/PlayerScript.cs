@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerScript : MonoBehaviour
 {
     public CharacterController controller;
     public RigidbodyInterpolation interpolate;
@@ -18,7 +18,10 @@ public class PlayerMovement : MonoBehaviour
     public float currentStamina = 0f;
     //public UIScript staminaBar;
     public float dValue = 10;
-
+    public float sValue = 2;
+    //sanity
+    public float maxSanity = 20;
+    public float currentSanity;
     public Transform groundCheck;
     public float groundDistance = 0.4f;
     public LayerMask groundMask;
@@ -31,6 +34,7 @@ public class PlayerMovement : MonoBehaviour
     {
         currentStamina = maxStamina;
         //staminaBar.SetStamina(maxStamina);
+        currentSanity = maxSanity;
     }
 
 
@@ -53,6 +57,13 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (currentSanity > 0f)
+        {
+            currentSanity -= sValue * Time.deltaTime;
+            currentStamina = Mathf.Clamp(currentStamina, 0f, maxStamina);
+        }
+
+
         currentStamina = Mathf.Clamp(currentStamina, 0, maxStamina);
         ccontroller = GetComponent<CharacterController>();
 

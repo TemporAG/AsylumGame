@@ -25,6 +25,7 @@ public class ItemPickupThrow : MonoBehaviour
 
     public LayerMask layerMask;
     RaycastHit hit;
+    PlayerScript playerScript;
 
     //private AIscript aIscript;
 
@@ -39,13 +40,6 @@ public class ItemPickupThrow : MonoBehaviour
         {
             nextTimeToPickup = Time.time + 2f / PickupRate;
             Shoot();
-        }
-        origin = transform.position;
-        direction = fpsCam.ScreenPointToRay(Input.mousePosition).direction;
-        if (Input.GetKeyDown(KeyCode.E) && Time.time >= nextTimeToPickup)
-        {
-            nextTimeToPickup = Time.time + 2f / PickupRate;
-            //Shoot(); 
         }
 
         if (Input.GetKeyDown(KeyCode.E))
@@ -132,8 +126,8 @@ public class ItemPickupThrow : MonoBehaviour
         {
             if (hit.transform.CompareTag("Consumable"))
             {
+                playerScript.currentSanity += 10f;
                 Debug.Log("e");
-                //do something
             }
         }
     }
