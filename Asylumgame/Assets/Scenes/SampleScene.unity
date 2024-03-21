@@ -704,11 +704,14 @@ MonoBehaviour:
   maxStamina: 30
   currentStamina: 0
   dValue: 10
+  sValue: 0.3
+  maxSanity: 40
+  currentSanity: 0
   groundCheck: {fileID: 311095404}
   groundDistance: 0.4
   groundMask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 384
 --- !u!143 &1222150856
 CharacterController:
   m_ObjectHideFlags: 0
@@ -815,9 +818,10 @@ GameObject:
   - component: {fileID: 1230110009}
   - component: {fileID: 1230110008}
   - component: {fileID: 1230110007}
+  - component: {fileID: 1230110012}
   m_Layer: 8
   m_Name: Bottle (1)
-  m_TagString: Holdable
+  m_TagString: Consumable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -935,6 +939,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1230110012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1230110006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef31112c4df0b1c48a6bab8b273f0fa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1757826048
 GameObject:
   m_ObjectHideFlags: 0

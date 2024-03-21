@@ -31,7 +31,6 @@ public class ItemPickupThrow : MonoBehaviour
 
 
 
-
     void Update()
     {
         origin = transform.position;
@@ -126,6 +125,7 @@ public class ItemPickupThrow : MonoBehaviour
         {
             if (hit.transform.CompareTag("Consumable"))
             {
+                playerScript = FindObjectOfType<PlayerScript>();
                 playerScript.currentSanity += 10f;
                 Debug.Log("e");
             }

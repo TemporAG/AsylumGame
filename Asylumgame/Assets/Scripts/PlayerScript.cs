@@ -17,10 +17,10 @@ public class PlayerScript : MonoBehaviour
     public float maxStamina = 30f;
     public float currentStamina = 0f;
     //public UIScript staminaBar;
-    public float dValue = 10;
-    public float sValue = 2;
+    public float dValue = 10f;
+    public float sValue = 0.3f;
     //sanity
-    public float maxSanity = 20;
+    public float maxSanity = 40f;
     public float currentSanity;
     public Transform groundCheck;
     public float groundDistance = 0.4f;
@@ -57,10 +57,11 @@ public class PlayerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         if (currentSanity > 0f)
         {
             currentSanity -= sValue * Time.deltaTime;
-            currentStamina = Mathf.Clamp(currentStamina, 0f, maxStamina);
+            currentSanity = Mathf.Clamp(currentSanity, 0f, maxSanity);
         }
 
 
