@@ -127,6 +127,7 @@ public class ItemPickupThrow : MonoBehaviour
             {
                 playerScript = FindObjectOfType<PlayerScript>();
                 playerScript.currentSanity += 10f;
+                Destroy(hit.collider.gameObject);
                 Debug.Log("e");
             }
         }
