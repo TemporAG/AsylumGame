@@ -6,7 +6,6 @@ public class AiScript : MonoBehaviour
 {
     public NavMeshAgent agent;
     public Transform player;
-    public bool playerseen;//player detected
     public static bool SphereCast;
 
 
@@ -74,8 +73,10 @@ public class AiScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (canSeePlayer == true){
-        agent.SetDestination(player.transform.position);}
+        if (canSeePlayer == true)
+        {
+           agent.SetDestination(player.transform.position);
+        } 
 
     }
     void Attack()
