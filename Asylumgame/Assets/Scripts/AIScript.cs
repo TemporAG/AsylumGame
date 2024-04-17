@@ -73,11 +73,10 @@ public class AiScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (canSeePlayer == true)
+        if (canSeePlayer)
         {
            agent.SetDestination(player.transform.position);
-        } 
-
+        }
     }
     void Attack()
     {
