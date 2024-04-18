@@ -30,8 +30,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5895841404454638}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.82, y: 9.68, z: 1.18}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 5.186, y: 10.35, z: 5.79}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1938173107260845162}
@@ -95,7 +95,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5895841404454638}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 6cc5fdefde0b3ea4ca4a9731e4508908, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -129,8 +129,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   radius: 10
-  angle: 130
+  angle: 145
   playerRef: {fileID: 0}
+  distractRef: {fileID: 0}
   targetMask:
     serializedVersion: 2
     m_Bits: 1024
@@ -138,6 +139,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   canSeePlayer: 0
+  isDistracted: 0
 --- !u!195 &5554710217679592513
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -183,7 +185,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0

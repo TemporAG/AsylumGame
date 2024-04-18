@@ -21,6 +21,7 @@ public class AiScript : MonoBehaviour
     public LayerMask obstructionMask;
 
     public bool canSeePlayer;
+    public bool isDistracted;
 
     private void Start()
     {
@@ -66,18 +67,32 @@ public class AiScript : MonoBehaviour
             canSeePlayer = false;
     }
 
-    // Start is called before the first frame update
-
-
-    // Update is called once per frame
+    private void OnTriggerEnter(Collider dcollision)
+    {
+        if (dcollision.gameObject.tag == "Distraction")
+        {
+            //agent.SetDestination(dcollision.transform.parent.position);
+            agent.SetDestination(dcollision.transform.position);
+            isDistracted = true;
+        }
+    }
     void Update()
     {
-        if (canSeePlayer)
+        if(isDistracted)
+        {
+            canSeePlayer = false;
+        }
+
+        if (isDistracted && agent.velocity == Vector3.zero)
+        {
+            isDistracted = false;
+        }
+
+        if(canSeePlayer)
         {
            agent.SetDestination(player.transform.position);
         }
     }
-
 
     void Attack()
     {
