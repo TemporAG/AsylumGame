@@ -8,9 +8,6 @@ public class AiScript : MonoBehaviour
     public Transform player;
     public static bool SphereCast;
 
-
-
-
     public LayerMask layerMask;
 
     public float radius;
@@ -18,6 +15,7 @@ public class AiScript : MonoBehaviour
     public float angle;
 
     public GameObject playerRef;
+    public GameObject distractRef;
 
     public LayerMask targetMask;
     public LayerMask obstructionMask;
@@ -28,6 +26,7 @@ public class AiScript : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         playerRef = GameObject.FindGameObjectWithTag("Player");
+        distractRef = GameObject.FindGameObjectWithTag("Distraction");
         StartCoroutine(FOVRoutine());
     }
 
@@ -78,6 +77,8 @@ public class AiScript : MonoBehaviour
            agent.SetDestination(player.transform.position);
         }
     }
+
+
     void Attack()
     {
         //player dies
