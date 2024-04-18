@@ -559,6 +559,12 @@ PrefabInstance:
       propertyPath: rb
       value: 
       objectReference: {fileID: 182508008}
+    - target: {fileID: -947594271158050393, guid: 34e94f458c111f940af13eee86a13e34,
+        type: 3}
+      propertyPath: DistractionObject
+      value: 
+      objectReference: {fileID: 6840708682135165045, guid: eaa5fa1839b31c846b8d3139a67dfead,
+        type: 3}
     - target: {fileID: 1556603644282557968, guid: 34e94f458c111f940af13eee86a13e34,
         type: 3}
       propertyPath: m_RootOrder

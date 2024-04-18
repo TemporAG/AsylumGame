@@ -7,6 +7,7 @@ using UnityEngine;
 public class ObjectDistractionScript : MonoBehaviour
 {
     public Rigidbody rb;
+    public GameObject DistractionObject;
 
     float speedX; float speedY; float speedZ;
     public float speed;
@@ -34,6 +35,8 @@ public class ObjectDistractionScript : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        //LETS GOO
-    }
+        if(speed > 4) 
+        {
+            Instantiate(DistractionObject, transform.position, Quaternion.identity);
+    }   }
 }
