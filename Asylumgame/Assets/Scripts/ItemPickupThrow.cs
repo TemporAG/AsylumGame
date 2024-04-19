@@ -27,8 +27,6 @@ public class ItemPickupThrow : MonoBehaviour
     RaycastHit hit;
     PlayerScript playerScript;
 
-    //private AIscript aIscript;
-
 
 
     void Update()
