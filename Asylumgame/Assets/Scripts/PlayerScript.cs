@@ -13,6 +13,8 @@ public class PlayerScript : MonoBehaviour
     public float crouchSpeed = 2.0f;
     public float gravity = -9.81f;
     public float height = 2.0f;
+    float crouchHeight = 1.0f;
+    float enlargementHeight = 3.0f;
     //stamina
     public float maxStamina = 30f;
     public float currentStamina = 0f;
@@ -54,10 +56,20 @@ public class PlayerScript : MonoBehaviour
             currentStamina += dValue * Time.deltaTime;
         }
     }
+
+    private void Enlargement()
+    {
+        height += dValue * Time.deltaTime;
+        height = Mathf.Clamp(height, 0f, enlargementHeight);
+    }
     // Update is called once per frame
     void Update()
     {
-        
+        if (currentSanity <10)
+        {
+            Enlargement();
+        }
+
         if (currentSanity > 0f)
         {
             currentSanity -= sValue * Time.deltaTime;
@@ -90,7 +102,7 @@ public class PlayerScript : MonoBehaviour
 
         if (Input.GetKey(KeyCode.LeftControl))
         {
-            ccontroller.height = 1.0f;
+            ccontroller.height = crouchHeight;
             speed = crouchSpeed;
         }
         else
@@ -109,7 +121,6 @@ public class PlayerScript : MonoBehaviour
         {
             Invoke("IncreaseStamina", 3);
         }
-
     }
 }
 

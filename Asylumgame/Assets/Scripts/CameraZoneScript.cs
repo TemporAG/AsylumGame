@@ -5,7 +5,6 @@ using UnityEngine;
 public class CameraZoneScript : MonoBehaviour
 {
 
-    public GameObject playerReference;
 
     AiScript aiScript;
     //public GameObject CamZone;
@@ -13,7 +12,7 @@ public class CameraZoneScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //playerReference = GameObject.FindGameObjectWithTag("Player");
+        aiScript = FindObjectOfType<AiScript>();
     }
 
     // Update is called once per frame
@@ -32,12 +31,12 @@ public class CameraZoneScript : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit(Collider ccollision)
+    private void OnTriggerStay(Collider ccollision)
     {
-        if (ccollision.gameObject.tag == "Player" == false)
+        if(ccollision.gameObject.tag == "Player")
         {
-            aiScript.canSeePlayer = false;
+            Debug.Log("a");
+            aiScript.canSeePlayer = true;
         }
-
     }
 }
