@@ -5,10 +5,10 @@ using UnityEngine;
 public class CameraZoneScript : MonoBehaviour
 {
 
-    //public GameObject playerReference;
+    public GameObject playerReference;
 
-
-    public GameObject CamZone;
+    AiScript aiScript;
+    //public GameObject CamZone;
 
     // Start is called before the first frame update
     void Start()
@@ -19,7 +19,7 @@ public class CameraZoneScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 
     private void OnTriggerEnter(Collider ccollision)
@@ -27,7 +27,17 @@ public class CameraZoneScript : MonoBehaviour
         if (ccollision.gameObject.tag == "Player")
         {
             Debug.Log("abcbcbcbcbc");
-            Instantiate(CamZone, transform.position, Quaternion.identity);
+            aiScript.canSeePlayer = true;
+            //Instantiate(CamZone, transform.position, Quaternion.identity);
         }
+    }
+
+    private void OnTriggerExit(Collider ccollision)
+    {
+        if (ccollision.gameObject.tag == "Player" == false)
+        {
+            aiScript.canSeePlayer = false;
+        }
+
     }
 }
