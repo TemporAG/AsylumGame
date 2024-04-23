@@ -33,7 +33,6 @@ public class PlayerScript : MonoBehaviour
 
     Vector3 velocity;
     bool isGrounded;
-    bool isBig;
 
 
     void Start()
@@ -63,32 +62,21 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
-    private void Enlargement()
-    {
-        Debug.Log("enlar");
-        temp = transform.localScale;
-        temp.y += aValue * Time.deltaTime;
-        temp.y = Mathf.Clamp(temp.y, 0f, enlargementHeight);
-        transform.localScale = temp;
-    }
+
 
     private void DeEnlargement()
     {
+        Debug.Log("DEENLANRMENTEFASDFNFJAENF");
         temp = transform.localScale;
-        temp.y -= aValue * Time.deltaTime;
-        temp.y = Mathf.Clamp(temp.y, 0f, enlargementHeight);
-        transform.localScale = temp;
+        temp.y = 1f;
     }
+
     // Update is called once per frame
     void Update()
     {
-        if (currentSanity <10 && isBig == false)
+        if (currentSanity < 10)
         {
-            Enlargement();
-        }
-        else if (currentSanity> 10 && isBig == true)
-        {
-            DeEnlargement();
+            StartCoroutine(Enlargement());
         }
 
         if (currentSanity > 0f)
@@ -141,5 +129,15 @@ public class PlayerScript : MonoBehaviour
             Invoke("IncreaseStamina", 3);
         }
     }
-}
 
+    private IEnumerator Enlargement()
+    {
+        Debug.Log("enlar");
+        temp = transform.localScale;
+        temp.y += aValue * Time.deltaTime;
+        temp.y = Mathf.Clamp(temp.y, 0f, enlargementHeight);
+        transform.localScale = temp;
+        yield return new WaitForSeconds(3);
+        DeEnlargement();
+    }
+}

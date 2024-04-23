@@ -2191,7 +2191,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 1222150856}
   interpolate: 0
-  ttransform: {fileID: 0}
+  ttransform: {fileID: 1222150859}
   speed: 0
   sprintSpeed: 7
   walkSpeed: 4.5
