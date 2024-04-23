@@ -6,6 +6,7 @@ public class PlayerScript : MonoBehaviour
 {
     public CharacterController controller;
     public RigidbodyInterpolation interpolate;
+    public Transform ttransform;
     //movement
     public float speed;
     public float sprintSpeed = 7.0f;
@@ -14,26 +15,31 @@ public class PlayerScript : MonoBehaviour
     public float gravity = -9.81f;
     public float height = 2.0f;
     float crouchHeight = 1.0f;
-    float enlargementHeight = 3.0f;
+    float enlargementHeight = 2.0f;
+    Vector3 temp;
     //stamina
     public float maxStamina = 30f;
     public float currentStamina = 0f;
     //public UIScript staminaBar;
-    public float dValue = 10f;
-    public float sValue = 0.3f;
+    float dValue = 10f;
+    float sValue = 0.3f;
+    float aValue = 0.09f;
     //sanity
     public float maxSanity = 40f;
     public float currentSanity;
     public Transform groundCheck;
     public float groundDistance = 0.4f;
     public LayerMask groundMask;
-    private CharacterController ccontroller;
 
     Vector3 velocity;
     bool isGrounded;
+    bool isBig;
+
 
     void Start()
     {
+        controller = GetComponent<CharacterController>();
+        ttransform = GetComponent<Transform>();
         currentStamina = maxStamina;
         //staminaBar.SetStamina(maxStamina);
         currentSanity = maxSanity;
@@ -59,15 +65,30 @@ public class PlayerScript : MonoBehaviour
 
     private void Enlargement()
     {
-        height += dValue * Time.deltaTime;
-        height = Mathf.Clamp(height, 0f, enlargementHeight);
+        Debug.Log("enlar");
+        temp = transform.localScale;
+        temp.y += aValue * Time.deltaTime;
+        temp.y = Mathf.Clamp(temp.y, 0f, enlargementHeight);
+        transform.localScale = temp;
+    }
+
+    private void DeEnlargement()
+    {
+        temp = transform.localScale;
+        temp.y -= aValue * Time.deltaTime;
+        temp.y = Mathf.Clamp(temp.y, 0f, enlargementHeight);
+        transform.localScale = temp;
     }
     // Update is called once per frame
     void Update()
     {
-        if (currentSanity <10)
+        if (currentSanity <10 && isBig == false)
         {
             Enlargement();
+        }
+        else if (currentSanity> 10 && isBig == true)
+        {
+            DeEnlargement();
         }
 
         if (currentSanity > 0f)
@@ -76,9 +97,8 @@ public class PlayerScript : MonoBehaviour
             currentSanity = Mathf.Clamp(currentSanity, 0f, maxSanity);
         }
 
-
         currentStamina = Mathf.Clamp(currentStamina, 0, maxStamina);
-        ccontroller = GetComponent<CharacterController>();
+        controller = GetComponent<CharacterController>();
 
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
@@ -99,21 +119,20 @@ public class PlayerScript : MonoBehaviour
         controller.Move(velocity * Time.deltaTime);
 
 
-
         if (Input.GetKey(KeyCode.LeftControl))
         {
-            ccontroller.height = crouchHeight;
+            controller.height = crouchHeight;
             speed = crouchSpeed;
         }
         else
         {
-            ccontroller.height = 2.0f;
+            controller.height = 2.0f;
             speed = walkSpeed;
         }
         if (Input.GetKey(KeyCode.LeftShift) && currentStamina > 0)
         {
             DecreaseStamina();
-            ccontroller.height = 2.0f;
+            controller.height = 2.0f;
             speed = sprintSpeed;
             //staminaBar.SetStamina(currentStamina);
         }
