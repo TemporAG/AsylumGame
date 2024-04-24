@@ -33,6 +33,7 @@ public class PlayerScript : MonoBehaviour
 
     Vector3 velocity;
     bool isGrounded;
+    bool canGrow;
 
 
     void Start()
@@ -42,6 +43,7 @@ public class PlayerScript : MonoBehaviour
         currentStamina = maxStamina;
         //staminaBar.SetStamina(maxStamina);
         currentSanity = maxSanity;
+        canGrow = false;
     }
 
 
@@ -62,26 +64,40 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
-
+    private void Enlargement()
+    {
+            Debug.Log("enlar");
+            temp = transform.localScale;
+            temp.y += aValue * Time.deltaTime;
+            temp.y = Mathf.Clamp(temp.y, 0f, enlargementHeight);
+            transform.localScale = temp;
+            Invoke("DeEnlargement", 8);   
+    }
 
     private void DeEnlargement()
     {
-        Debug.Log("DEENLANRMENTEFASDFNFJAENF");
-        temp = transform.localScale;
-        temp.y = 1f;
+        Debug.Log("works");
+        temp.y -= aValue * Time.deltaTime;
+        temp.y = Mathf.Clamp(temp.y, 0f, enlargementHeight/2);
+        canGrow = false;
+        Debug.Log(canGrow);
     }
 
     // Update is called once per frame
     void Update()
     {
+        
         if (currentSanity < 10)
         {
-            StartCoroutine(Enlargement());
+            canGrow = true;
         }
+        else { canGrow = false; }
 
+        if(canGrow) { Enlargement(); }
+        if(!canGrow ) { DeEnlargement(); }
         if (currentSanity > 0f)
         {
-            currentSanity -= sValue * Time.deltaTime;
+            currentSanity -= sValue * Time.deltaTime/2;
             currentSanity = Mathf.Clamp(currentSanity, 0f, maxSanity);
         }
 
@@ -128,16 +144,5 @@ public class PlayerScript : MonoBehaviour
         {
             Invoke("IncreaseStamina", 3);
         }
-    }
-
-    private IEnumerator Enlargement()
-    {
-        Debug.Log("enlar");
-        temp = transform.localScale;
-        temp.y += aValue * Time.deltaTime;
-        temp.y = Mathf.Clamp(temp.y, 0f, enlargementHeight);
-        transform.localScale = temp;
-        yield return new WaitForSeconds(3);
-        DeEnlargement();
     }
 }
