@@ -76,11 +76,11 @@ public class PlayerScript : MonoBehaviour
 
     private void DeEnlargement()
     {
-        Debug.Log("works");
+        //Debug.Log("works");
         temp.y -= aValue * Time.deltaTime;
         temp.y = Mathf.Clamp(temp.y, 0f, enlargementHeight/2);
         canGrow = false;
-        Debug.Log(canGrow);
+        //Debug.Log(canGrow);
     }
 
     // Update is called once per frame

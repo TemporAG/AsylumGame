@@ -26,6 +26,7 @@ public class AiScript : MonoBehaviour
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        agent.autoBraking = false;
         playerRef = GameObject.FindGameObjectWithTag("Player");
         distractRef = GameObject.FindGameObjectWithTag("Distraction");
         StartCoroutine(FOVRoutine());
