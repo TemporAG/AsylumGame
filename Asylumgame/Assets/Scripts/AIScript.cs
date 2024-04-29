@@ -16,6 +16,8 @@ public class AiScript : MonoBehaviour
 
     public GameObject playerRef;
     public GameObject distractRef;
+    public GameObject Red;
+    public GameObject White;
 
     public LayerMask targetMask;
     public LayerMask obstructionMask;
@@ -30,6 +32,8 @@ public class AiScript : MonoBehaviour
         playerRef = GameObject.FindGameObjectWithTag("Player");
         distractRef = GameObject.FindGameObjectWithTag("Distraction");
         StartCoroutine(FOVRoutine());
+        Red.SetActive(false);
+        White.SetActive(true);
     }
 
     private IEnumerator FOVRoutine()
@@ -92,6 +96,13 @@ public class AiScript : MonoBehaviour
         if(canSeePlayer)
         {
            agent.SetDestination(player.transform.position);
+            Red.SetActive(true);
+            White.SetActive(false);
+        }
+        else
+        {
+            Red.SetActive(false);
+            White.SetActive(true);
         }
     }
 

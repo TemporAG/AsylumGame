@@ -7,6 +7,7 @@ TagManager:
   - Holdable
   - Consumable
   - Distraction
+  - View
   layers:
   - Default
   - TransparentFX
