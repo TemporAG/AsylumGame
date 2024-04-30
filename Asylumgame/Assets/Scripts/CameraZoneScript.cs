@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class CameraZoneScript : MonoBehaviour
 {
@@ -38,5 +39,13 @@ public class CameraZoneScript : MonoBehaviour
             Debug.Log("a");
             aiScript.canSeePlayer = true;
         }
+        else
+        {
+            aiScript.canSeePlayer = false;
+        }
+        
+        
+            
+        
     }
 }

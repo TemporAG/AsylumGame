@@ -11,6 +11,10 @@ public class AiScript : MonoBehaviour
 
     public LayerMask layerMask;
 
+    public Transform[] waypoints;
+    int waypointIndex;
+    Vector3 target;
+
     public float radius;
     [Range(0, 360)]
     public float angle;
@@ -35,6 +39,7 @@ public class AiScript : MonoBehaviour
         StartCoroutine(FOVRoutine());
         Red.SetActive(false);
         White.SetActive(true);
+        UpdateDestination();
     }
 
     private IEnumerator FOVRoutine()
@@ -73,6 +78,7 @@ public class AiScript : MonoBehaviour
             canSeePlayer = false;
     }
 
+
     private void OnTriggerEnter(Collider dcollision)
     {
         if (dcollision.gameObject.tag == "Distraction")
@@ -91,21 +97,52 @@ public class AiScript : MonoBehaviour
         if (isDistracted && agent.velocity == Vector3.zero)
         {
             isDistracted = false;
+            
         }
 
         if(canSeePlayer)
         {
-           agent.SetDestination(player.transform.position);
+            agent.SetDestination(player.transform.position);
             Red.SetActive(true);
             White.SetActive(false);
         }
         else
         {
+            
             Red.SetActive(false);
             White.SetActive(true);
         }
+
+        /*if (!canSeePlayer && !isDistracted)
+        {
+            if (Vector3.Distance(transform.position, target) < 1)
+            {
+                IterateWaypointIndex();
+                UpdateDestination();
+            }
+        }*/
+        if(Vector3.Distance(transform.position, target) < 1)
+        {
+            IterateWaypointIndex();
+            UpdateDestination();
+        }
     }
 
+
+    void UpdateDestination()
+    {
+        target = waypoints[waypointIndex].position;
+        agent.SetDestination(target);
+    }
+
+    void IterateWaypointIndex()
+    {
+        waypointIndex++;
+        if (waypointIndex == waypoints.Length)
+        {
+            waypointIndex = 0;
+        }
+    }
     void Attack()
     {
         //player dies
