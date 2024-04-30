@@ -37,6 +37,7 @@ public class ItemPickupThrow : MonoBehaviour
         {
             nextTimeToPickup = Time.time + 2f / PickupRate;
             Shoot();
+            
         }
 
         if (Input.GetKeyDown(KeyCode.E))
@@ -50,7 +51,7 @@ public class ItemPickupThrow : MonoBehaviour
 
                     if (hit.transform.gameObject.tag == "Holdable")
                     {
-
+                        Debug.Log("aaaaaa");
                         PickUpObject(hit.transform.gameObject);
                     }
                 }
@@ -59,7 +60,7 @@ public class ItemPickupThrow : MonoBehaviour
             {
                 if (canDrop == true)
                 {
-
+                    
                     DropObject();
                 }
             }
