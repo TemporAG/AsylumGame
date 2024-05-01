@@ -113,21 +113,16 @@ public class AiScript : MonoBehaviour
             White.SetActive(true);
         }
 
-        /*if (!canSeePlayer && !isDistracted)
+        //=====================================================
+        if(Vector3.Distance(transform.position, target) < 1)
         {
-            if (Vector3.Distance(transform.position, target) < 1)
+            if(!canSeePlayer || !isDistracted)// MY failed attempt
             {
                 IterateWaypointIndex();
                 UpdateDestination();
             }
-        }*/
-        if(Vector3.Distance(transform.position, target) < 1)
-        {
-            IterateWaypointIndex();
-            UpdateDestination();
         }
     }
-
 
     void UpdateDestination()
     {
@@ -143,6 +138,7 @@ public class AiScript : MonoBehaviour
             waypointIndex = 0;
         }
     }
+    //===========================================================
     void Attack()
     {
         //player dies
