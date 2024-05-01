@@ -51,7 +51,6 @@ public class ItemPickupThrow : MonoBehaviour
 
                     if (hit.transform.gameObject.tag == "Holdable")
                     {
-                        Debug.Log("aaaaaa");
                         PickUpObject(hit.transform.gameObject);
                     }
                 }
