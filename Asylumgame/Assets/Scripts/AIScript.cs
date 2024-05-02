@@ -77,7 +77,7 @@ public class AiScript : MonoBehaviour
         else if (canSeePlayer)
             canSeePlayer = false;
     }
-
+    bool needsDelay;
 
     private void OnTriggerEnter(Collider dcollision)
     {
@@ -97,20 +97,22 @@ public class AiScript : MonoBehaviour
         if (isDistracted && agent.velocity == Vector3.zero)
         {
             isDistracted = false;
-            
+            StartCoroutine(Delay(4));
         }
 
         if(canSeePlayer)
         {
+            needsDelay = true;
             agent.SetDestination(player.transform.position);
             Red.SetActive(true);
             White.SetActive(false);
         }
-        else
+        else if (needsDelay)
         {
-            //StartCoroutine("UpdateDestination"();
+            needsDelay = false;
             Red.SetActive(false);
             White.SetActive(true);
+            StartCoroutine(Delay(4));
         }
 
         //=====================================================\\
@@ -140,5 +142,11 @@ public class AiScript : MonoBehaviour
     void Attack()
     {
         //player dies
+    }
+
+    public IEnumerator Delay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        UpdateDestination();
     }
 }
