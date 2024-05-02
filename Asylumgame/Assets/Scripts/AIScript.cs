@@ -26,7 +26,6 @@ public class AiScript : MonoBehaviour
 
     public LayerMask targetMask;
     public LayerMask obstructionMask;
-
     public bool canSeePlayer;
     public bool isDistracted;
 

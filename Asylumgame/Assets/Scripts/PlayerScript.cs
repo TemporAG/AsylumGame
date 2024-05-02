@@ -30,7 +30,8 @@ public class PlayerScript : MonoBehaviour
     public Transform groundCheck;
     public float groundDistance = 0.4f;
     public LayerMask groundMask;
-
+    //key
+    char key;
     Vector3 velocity;
     bool isGrounded;
     bool canGrow;
@@ -86,7 +87,29 @@ public class PlayerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        switch (key) { 
         
+            case 'A':
+
+               break;
+            case 'B':
+
+                break;
+            case 'C':
+
+                break;
+            case 'D':
+
+                break;
+            case 'E':
+
+                break;
+            case 'F':
+
+                break;
+        }
+
+
         if (currentSanity < 10)
         {
             canGrow = true;
