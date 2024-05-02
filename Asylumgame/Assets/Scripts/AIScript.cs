@@ -108,6 +108,7 @@ public class AiScript : MonoBehaviour
         }
         else
         {
+            //StartCoroutine("UpdateDestination"();
             Red.SetActive(false);
             White.SetActive(true);
         }
