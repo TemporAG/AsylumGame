@@ -28,6 +28,8 @@ public class AiScript : MonoBehaviour
     public LayerMask obstructionMask;
     public bool canSeePlayer;
     public bool isDistracted;
+    public bool playerSeenForLongTime;
+    float seenDelay = 4.0f;
 
     private void Start()
     {
@@ -101,10 +103,12 @@ public class AiScript : MonoBehaviour
 
         if(canSeePlayer)
         {
+            
             needsDelay = true;
             agent.SetDestination(player.transform.position);
             Red.SetActive(true);
             White.SetActive(false);
+            StartCoroutine(PlayerSeen(0.1f));
         }
         else if (needsDelay)
         {
@@ -114,12 +118,13 @@ public class AiScript : MonoBehaviour
             StartCoroutine(Delay(4));
         }
 
-        //=====================================================\\
         if(Vector3.Distance(transform.position, target) < 1)
         { 
            IterateWaypointIndex();
            UpdateDestination(); 
         }
+
+
     }
 
     void UpdateDestination()
@@ -137,15 +142,23 @@ public class AiScript : MonoBehaviour
         }
     }
 
-    //===========================================================\\
     void Attack()
     {
         //player dies
     }
-
+    
     public IEnumerator Delay(float delay)
     {
         yield return new WaitForSeconds(delay);
         UpdateDestination();
+    }
+
+    public IEnumerator PlayerSeen(float seenDelay)
+    {
+        yield return new WaitForSeconds(seenDelay);
+        if (canSeePlayer)
+        {
+            Debug.Log("can still see player");
+        }
     }
 }

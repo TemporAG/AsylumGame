@@ -35,7 +35,7 @@ public class ObjectDistractionScript : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(speed > 0f) 
+        if(speed > 0.1f) 
         {
             Instantiate(DistractionObject, transform.position, Quaternion.identity);
     }   }

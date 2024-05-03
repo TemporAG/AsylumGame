@@ -9,11 +9,15 @@ public class MouseLook : MonoBehaviour
     public float mouseSensitivity = 1000f;
 
     public Transform playerBody;
+    public GameObject flashLight;
+
+    bool flashLightOn;
 
     float xRotation = 0f;
 
     void Start()
     {
+        flashLight.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
     }
 
@@ -28,6 +32,20 @@ public class MouseLook : MonoBehaviour
 
         transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
         playerBody.Rotate(Vector3.up * mouseX);
+
+        if (Input.GetKeyDown("f") && !flashLightOn)
+        {
+            flashLight.SetActive(true);
+            Debug.Log("on");
+            flashLightOn = true;
+
+        }
+        else if (Input.GetKeyDown("f") && flashLightOn)
+        {
+            flashLight.SetActive(false);
+            Debug.Log("off");
+            flashLightOn = false;
+        }
     }
 }
 
