@@ -26,11 +26,50 @@ public class ItemPickupThrow : MonoBehaviour
     public LayerMask layerMask;
     RaycastHit hit;
     PlayerScript playerScript;
+    char key;
 
+    bool yellowKey;
+    bool blueKey;
+    bool greenKey;
+    bool redKey;
+    bool orangeKey;
+    bool purpleKey;
 
+    private void Start()
+    {
+        
+        yellowKey = false;
+        blueKey = false;
+        greenKey = false;
+        redKey = false;
+        orangeKey = false;
+        purpleKey = false;
+    }
 
     void Update()
     {
+        switch (key)
+        {
+
+            case 'A':
+                yellowKey = true;
+                break;
+            case 'B':
+                blueKey = true;
+                break;
+            case 'C':
+                greenKey = true;
+                break;
+            case 'D':
+                redKey = true;
+                break;
+            case 'E':
+                orangeKey = true;
+                break;
+            case 'F':
+                purpleKey = true;
+                break;
+        }
         origin = transform.position;
         direction = fpsCam.ScreenPointToRay(Input.mousePosition).direction;
         if (Input.GetKeyDown(KeyCode.E) && Time.time >= nextTimeToPickup)
@@ -134,7 +173,8 @@ public class ItemPickupThrow : MonoBehaviour
         {
             if (hit.transform.CompareTag("YellowK"))
             {
-                Debug.Log("Yellow");
+                yellowKey = true; Debug.Log("y");
+                Object.Destroy(hit.collider.gameObject);
             }
         }
 
@@ -142,7 +182,8 @@ public class ItemPickupThrow : MonoBehaviour
         {
             if (hit.transform.CompareTag("BlueK"))
             {
-
+                blueKey = true; Debug.Log("b");
+                Object.Destroy(hit.collider.gameObject);
             }
         }
 
@@ -150,7 +191,8 @@ public class ItemPickupThrow : MonoBehaviour
         {
             if (hit.transform.CompareTag("GreenK"))
             {
-
+                greenKey = true; Debug.Log("g");
+                Object.Destroy(hit.collider.gameObject);
             }
         }
 
@@ -158,7 +200,8 @@ public class ItemPickupThrow : MonoBehaviour
         {
             if (hit.transform.CompareTag("RedK"))
             {
-
+                redKey = true; Debug.Log("r");
+                Object.Destroy(hit.collider.gameObject);
             }
         }
 
@@ -166,7 +209,8 @@ public class ItemPickupThrow : MonoBehaviour
         {
             if (hit.transform.CompareTag("OrangeK"))
             {
-
+                orangeKey = true; Debug.Log("o");
+                Object.Destroy(hit.collider.gameObject);
             }
         }
 
@@ -174,7 +218,8 @@ public class ItemPickupThrow : MonoBehaviour
         {
             if (hit.transform.CompareTag("PurpleK"))
             {
-
+                purpleKey = true; Debug.Log("p");
+                Object.Destroy(hit.collider.gameObject);
             }
         }
     }

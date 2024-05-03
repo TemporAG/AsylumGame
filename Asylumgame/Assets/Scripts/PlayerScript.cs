@@ -99,29 +99,6 @@ public class PlayerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        switch (key) { 
-        
-            case 'A':
-                yellowKey = true;
-               break;
-            case 'B':
-                blueKey = true;
-                break;
-            case 'C':
-                greenKey = true;
-                break;
-            case 'D':
-                redKey = true;
-                break;
-            case 'E':
-                orangeKey = true;
-                break;
-            case 'F':
-                purpleKey = true;
-                break;
-        }
-
-
         if (currentSanity < 10)
         {
             canGrow = true;

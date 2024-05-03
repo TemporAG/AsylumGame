@@ -23,13 +23,14 @@ public class AiScript : MonoBehaviour
     public GameObject distractRef;
     public GameObject Red;
     public GameObject White;
+    public GameObject BackupRobo;
 
     public LayerMask targetMask;
     public LayerMask obstructionMask;
     public bool canSeePlayer;
     public bool isDistracted;
-    public bool playerSeenForLongTime;
-    float seenDelay = 4.0f;
+    
+    
 
     private void Start()
     {
@@ -103,12 +104,12 @@ public class AiScript : MonoBehaviour
 
         if(canSeePlayer)
         {
-            
+            BackupRobo.SetActive(true);
             needsDelay = true;
             agent.SetDestination(player.transform.position);
             Red.SetActive(true);
             White.SetActive(false);
-            StartCoroutine(PlayerSeen(0.1f));
+            //StartCoroutine(PlayerSeen(0.1f));
         }
         else if (needsDelay)
         {
@@ -153,12 +154,12 @@ public class AiScript : MonoBehaviour
         UpdateDestination();
     }
 
-    public IEnumerator PlayerSeen(float seenDelay)
+    /*public IEnumerator PlayerSeen(float seenDelay)
     {
         yield return new WaitForSeconds(seenDelay);
         if (canSeePlayer)
         {
             Debug.Log("can still see player");
         }
-    }
+    }*/
 }
