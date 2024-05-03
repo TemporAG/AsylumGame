@@ -36,7 +36,12 @@ public class PlayerScript : MonoBehaviour
     bool isGrounded;
     bool canGrow;
 
-
+    bool yellowKey;
+    bool blueKey;
+    bool greenKey;
+    bool redKey;
+    bool orangeKey;
+    bool purpleKey;
     void Start()
     {
         controller = GetComponent<CharacterController>();
@@ -45,6 +50,13 @@ public class PlayerScript : MonoBehaviour
         //staminaBar.SetStamina(maxStamina);
         currentSanity = maxSanity;
         canGrow = false;
+
+        yellowKey = false;
+        blueKey = false;
+        greenKey = false;
+        redKey = false;
+        orangeKey = false;
+        purpleKey = false;
     }
 
 
@@ -90,22 +102,22 @@ public class PlayerScript : MonoBehaviour
         switch (key) { 
         
             case 'A':
-
+                yellowKey = true;
                break;
             case 'B':
-
+                blueKey = true;
                 break;
             case 'C':
-
+                greenKey = true;
                 break;
             case 'D':
-
+                redKey = true;
                 break;
             case 'E':
-
+                orangeKey = true;
                 break;
             case 'F':
-
+                purpleKey = true;
                 break;
         }
 

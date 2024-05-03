@@ -8,6 +8,12 @@ TagManager:
   - Consumable
   - Distraction
   - View
+  - YellowK
+  - BlueK
+  - GreenK
+  - RedK
+  - OrangeK
+  - PurpleK
   layers:
   - Default
   - TransparentFX

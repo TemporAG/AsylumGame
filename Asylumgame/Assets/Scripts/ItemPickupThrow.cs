@@ -129,5 +129,53 @@ public class ItemPickupThrow : MonoBehaviour
                 Debug.Log("e");
             }
         }
+        
+        if(Physics.Raycast(origin, direction, out hit, range, layerMask))
+        {
+            if (hit.transform.CompareTag("YellowK"))
+            {
+                Debug.Log("Yellow");
+            }
+        }
+
+        if (Physics.Raycast(origin, direction, out hit, range, layerMask))
+        {
+            if (hit.transform.CompareTag("BlueK"))
+            {
+
+            }
+        }
+
+        if (Physics.Raycast(origin, direction, out hit, range, layerMask))
+        {
+            if (hit.transform.CompareTag("GreenK"))
+            {
+
+            }
+        }
+
+        if (Physics.Raycast(origin, direction, out hit, range, layerMask))
+        {
+            if (hit.transform.CompareTag("RedK"))
+            {
+
+            }
+        }
+
+        if (Physics.Raycast(origin, direction, out hit, range, layerMask))
+        {
+            if (hit.transform.CompareTag("OrangeK"))
+            {
+
+            }
+        }
+
+        if (Physics.Raycast(origin, direction, out hit, range, layerMask))
+        {
+            if (hit.transform.CompareTag("PurpleK"))
+            {
+
+            }
+        }
     }
 }
