@@ -35,9 +35,28 @@ public class ItemPickupThrow : MonoBehaviour
     bool orangeKey;
     bool purpleKey;
 
+    public GameObject YDoorC;
+    public GameObject BDoorC;
+    public GameObject GDoorC;
+    public GameObject RDoorC;
+    public GameObject ODoorC;
+    public GameObject PDoorC;
+    //=================\\
+    public GameObject YDoorO;
+    public GameObject BDoorO;
+    public GameObject GDoorO;
+    public GameObject RDoorO;
+    public GameObject ODoorO;
+    public GameObject PDoorO;
+
     private void Start()
     {
-        
+        YDoorO.SetActive(false);
+        BDoorO.SetActive(false);
+        GDoorO.SetActive(false);
+        RDoorO.SetActive(false);
+        ODoorO.SetActive(false);
+        PDoorO.SetActive(false);
         yellowKey = false;
         blueKey = false;
         greenKey = false;
@@ -220,6 +239,60 @@ public class ItemPickupThrow : MonoBehaviour
             {
                 purpleKey = true; Debug.Log("p");
                 Object.Destroy(hit.collider.gameObject);
+            }
+        }
+
+        if (Physics.Raycast(origin, direction, out hit,range, layerMask))
+        {
+            if (hit.transform.CompareTag("YellowDoor") && yellowKey)
+            {
+                YDoorC.SetActive(false);
+                YDoorO.SetActive(true);
+            }
+        }
+
+        if (Physics.Raycast(origin, direction, out hit, range, layerMask))
+        {
+            if (hit.transform.CompareTag("BlueDoor") && blueKey)
+            {
+                BDoorC.SetActive(false);
+                BDoorO.SetActive(true);
+            }
+        }
+
+        if (Physics.Raycast(origin, direction, out hit, range, layerMask))
+        {
+            if (hit.transform.CompareTag("GreenDoor") && blueKey)
+            {
+                GDoorC.SetActive(false);
+                GDoorO.SetActive(true);
+            }
+        }
+
+        if (Physics.Raycast(origin, direction, out hit, range, layerMask))
+        {
+            if (hit.transform.CompareTag("RedDoor") && blueKey)
+            {
+                RDoorC.SetActive(false);
+                RDoorO.SetActive(true);
+            }
+        }
+
+        if (Physics.Raycast(origin, direction, out hit, range, layerMask))
+        {
+            if (hit.transform.CompareTag("OrangeDoor") && blueKey)
+            {
+                ODoorC.SetActive(false);
+                ODoorO.SetActive(true);
+            }
+        }
+
+        if (Physics.Raycast(origin, direction, out hit, range, layerMask))
+        {
+            if (hit.transform.CompareTag("PurpleDoor") && blueKey)
+            {
+                PDoorC.SetActive(false);
+                PDoorO.SetActive(true);
             }
         }
     }
