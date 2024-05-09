@@ -1,35 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class hallucinationScript : MonoBehaviour
 {
 
     public GameObject hallucination;
+    public PlayerScript psanity;
 
-    // Start is called before the first frame update
+
     void Start()
     {
-        hallucination.SetActive(true);
+        hallucination.SetActive(false);
     }
 
     private void Disappear()
     {
         hallucination.SetActive(false);
+        Destroy(gameObject);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter(Collider scollision)
     {
-       
-    }
-
-    private void OnTriggerStay(Collider vcollision)
-    {
-        if (vcollision.gameObject.tag == "View")
+        if (scollision.gameObject.tag == "Player" && psanity.currentSanity < 35 )
         {
-            Invoke("Disappear", 1);
+            hallucination.SetActive(true);
+            Invoke("Disappear", 1f);
+            Debug.Log("aaa");
         }
-
     }
 }

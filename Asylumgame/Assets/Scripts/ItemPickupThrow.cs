@@ -67,7 +67,7 @@ public class ItemPickupThrow : MonoBehaviour
 
     void Update()
     {
-        switch (key)
+        /*switch (key)
         {
 
             case 'A':
@@ -88,7 +88,7 @@ public class ItemPickupThrow : MonoBehaviour
             case 'F':
                 purpleKey = true;
                 break;
-        }
+        }*/
         origin = transform.position;
         direction = fpsCam.ScreenPointToRay(Input.mousePosition).direction;
         if (Input.GetKeyDown(KeyCode.E) && Time.time >= nextTimeToPickup)

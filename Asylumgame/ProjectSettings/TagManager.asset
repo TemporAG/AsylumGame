@@ -20,6 +20,7 @@ TagManager:
   - RedDoor
   - OrangeDoor
   - PurpleDoor
+  - Spawner
   layers:
   - Default
   - TransparentFX

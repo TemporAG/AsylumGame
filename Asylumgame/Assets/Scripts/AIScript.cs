@@ -124,8 +124,6 @@ public class AiScript : MonoBehaviour
            IterateWaypointIndex();
            UpdateDestination(); 
         }
-
-
     }
 
     void UpdateDestination()

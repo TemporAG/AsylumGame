@@ -15,7 +15,7 @@ public class PlayerScript : MonoBehaviour
     public float gravity = -9.81f;
     public float height = 2.0f;
     float crouchHeight = 1.0f;
-    float enlargementHeight = 2.0f;
+    float enlargementHeight = 4.0f;
     Vector3 temp;
     //stamina
     public float maxStamina = 30f;
@@ -79,21 +79,22 @@ public class PlayerScript : MonoBehaviour
 
     private void Enlargement()
     {
-            Debug.Log("enlar");
-            temp = transform.localScale;
-            temp.y += aValue * Time.deltaTime;
-            temp.y = Mathf.Clamp(temp.y, 0f, enlargementHeight);
-            transform.localScale = temp;
-            Invoke("DeEnlargement", 8);   
+        Debug.Log("enlar");
+        controller.height = height*2;
+        /*temp = transform.localScale;
+        temp.y += aValue * Time.deltaTime;
+        temp.y = Mathf.Clamp(temp.y, 0f, enlargementHeight);
+        transform.localScale = temp;*/
+        Invoke("DeEnlargement", 8);   
     }
 
     private void DeEnlargement()
     {
+        controller.height = 2;
         //Debug.Log("works");
-        temp.y -= aValue * Time.deltaTime;
-        temp.y = Mathf.Clamp(temp.y, 0f, enlargementHeight/2);
+        //temp.y -= aValue * Time.deltaTime;
+        //temp.y = Mathf.Clamp(temp.y, 0f, enlargementHeight/2);
         canGrow = false;
-        //Debug.Log(canGrow);
     }
 
     // Update is called once per frame
@@ -106,7 +107,8 @@ public class PlayerScript : MonoBehaviour
         else { canGrow = false; }
 
         if(canGrow) { Enlargement(); }
-        if(!canGrow ) { DeEnlargement(); }
+        if(!canGrow) { DeEnlargement(); }
+
         if (currentSanity > 0f)
         {
             currentSanity -= sValue * Time.deltaTime/2;
@@ -137,7 +139,7 @@ public class PlayerScript : MonoBehaviour
 
         if (Input.GetKey(KeyCode.LeftControl))
         {
-            controller.height = crouchHeight;
+            controller.height = height/2;
             speed = crouchSpeed;
         }
         else
