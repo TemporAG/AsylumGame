@@ -28,6 +28,8 @@ public class ItemPickupThrow : MonoBehaviour
     PlayerScript playerScript;
     char key;
 
+    public bool canUseFlashlight;
+
     bool yellowKey;
     bool blueKey;
     bool greenKey;
@@ -49,7 +51,7 @@ public class ItemPickupThrow : MonoBehaviour
     public GameObject ODoorO;
     public GameObject PDoorO;
 
-    private void Start()
+    void Start()
     {
         YDoorO.SetActive(false);
         BDoorO.SetActive(false);
@@ -63,6 +65,8 @@ public class ItemPickupThrow : MonoBehaviour
         redKey = false;
         orangeKey = false;
         purpleKey = false;
+
+        canUseFlashlight = false;
     }
 
     void Update()
@@ -187,8 +191,18 @@ public class ItemPickupThrow : MonoBehaviour
                 Debug.Log("e");
             }
         }
-        
-        if(Physics.Raycast(origin, direction, out hit, range, layerMask))
+
+        if (Physics.Raycast(origin, direction, out hit, range, layerMask))
+        {
+            if (hit.transform.CompareTag("FlashLight"))
+            {
+                Debug.Log("JHSDHAGHDA");
+                canUseFlashlight = true;
+                Object.Destroy(hit.collider.gameObject);
+            }
+        }
+
+        if (Physics.Raycast(origin, direction, out hit, range, layerMask))
         {
             if (hit.transform.CompareTag("YellowK"))
             {

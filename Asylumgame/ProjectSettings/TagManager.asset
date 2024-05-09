@@ -21,6 +21,7 @@ TagManager:
   - OrangeDoor
   - PurpleDoor
   - Spawner
+  - FlashLight
   layers:
   - Default
   - TransparentFX

@@ -11,6 +11,8 @@ public class MouseLook : MonoBehaviour
     public Transform playerBody;
     public GameObject flashLight;
 
+    ItemPickupThrow IPT;
+
     bool flashLightOn;
 
     float xRotation = 0f;
@@ -19,6 +21,7 @@ public class MouseLook : MonoBehaviour
     {
         flashLight.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
+        IPT = FindObjectOfType<ItemPickupThrow>();
     }
 
     // Update is called once per frame
@@ -33,19 +36,16 @@ public class MouseLook : MonoBehaviour
         transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
         playerBody.Rotate(Vector3.up * mouseX);
 
-        if (Input.GetKeyDown("f") && !flashLightOn)
+        if (Input.GetKeyDown("f") && !flashLightOn && IPT.canUseFlashlight)
         {
             flashLight.SetActive(true);
-            Debug.Log("on");
             flashLightOn = true;
 
         }
-        else if (Input.GetKeyDown("f") && flashLightOn)
+        else if (Input.GetKeyDown("f") && flashLightOn && IPT.canUseFlashlight)
         {
             flashLight.SetActive(false);
-            Debug.Log("off");
             flashLightOn = false;
         }
     }
 }
-
