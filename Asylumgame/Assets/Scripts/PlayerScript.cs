@@ -9,8 +9,8 @@ public class PlayerScript : MonoBehaviour
     public Transform ttransform;
     //movement
     public float speed;
-    public float sprintSpeed = 7.0f;
-    public float walkSpeed = 4.5f;
+    public float sprintSpeed = 5.0f;
+    public float walkSpeed = 3.0f;
     public float crouchSpeed = 2.0f;
     public float gravity = -9.81f;
     public float height = 2.0f;
@@ -77,16 +77,17 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
-    private void Enlargement()
+    /*private void Enlargement()
     {
         Debug.Log("enlar");
         controller.height = height*2;
         /*temp = transform.localScale;
         temp.y += aValue * Time.deltaTime;
         temp.y = Mathf.Clamp(temp.y, 0f, enlargementHeight);
-        transform.localScale = temp;*/
+        transform.localScale = temp;
         Invoke("DeEnlargement", 8);   
     }
+
 
     private void DeEnlargement()
     {
@@ -96,6 +97,7 @@ public class PlayerScript : MonoBehaviour
         //temp.y = Mathf.Clamp(temp.y, 0f, enlargementHeight/2);
         canGrow = false;
     }
+*/
 
     // Update is called once per frame
     void Update()
@@ -106,8 +108,8 @@ public class PlayerScript : MonoBehaviour
         }
         else { canGrow = false; }
 
-        if(canGrow) { Enlargement(); }
-        if(!canGrow) { DeEnlargement(); }
+        //if(canGrow) { Enlargement(); }
+        //if(!canGrow) { DeEnlargement(); }
 
         if (currentSanity > 0f)
         {
