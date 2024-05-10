@@ -276,7 +276,7 @@ public class ItemPickupThrow : MonoBehaviour
 
         if (Physics.Raycast(origin, direction, out hit, range, layerMask))
         {
-            if (hit.transform.CompareTag("GreenDoor") && blueKey)
+            if (hit.transform.CompareTag("GreenDoor") && greenKey)
             {
                 GDoorC.SetActive(false);
                 GDoorO.SetActive(true);
@@ -285,7 +285,7 @@ public class ItemPickupThrow : MonoBehaviour
 
         if (Physics.Raycast(origin, direction, out hit, range, layerMask))
         {
-            if (hit.transform.CompareTag("RedDoor") && blueKey)
+            if (hit.transform.CompareTag("RedDoor") && redKey)
             {
                 RDoorC.SetActive(false);
                 RDoorO.SetActive(true);
@@ -294,7 +294,7 @@ public class ItemPickupThrow : MonoBehaviour
 
         if (Physics.Raycast(origin, direction, out hit, range, layerMask))
         {
-            if (hit.transform.CompareTag("OrangeDoor") && blueKey)
+            if (hit.transform.CompareTag("OrangeDoor") && orangeKey)
             {
                 ODoorC.SetActive(false);
                 ODoorO.SetActive(true);
@@ -303,7 +303,7 @@ public class ItemPickupThrow : MonoBehaviour
 
         if (Physics.Raycast(origin, direction, out hit, range, layerMask))
         {
-            if (hit.transform.CompareTag("PurpleDoor") && blueKey)
+            if (hit.transform.CompareTag("PurpleDoor") && purpleKey)
             {
                 PDoorC.SetActive(false);
                 PDoorO.SetActive(true);
