@@ -10,6 +10,7 @@ public class MainMenuScript : MonoBehaviour
     public GameObject Quit;
     public GameObject MiniTutorial;
     public GameObject Back;
+    public GameObject Slider;
     public void PlayGame()
     {
         Play.SetActive(false);
@@ -21,6 +22,7 @@ public class MainMenuScript : MonoBehaviour
     public void OptionsB()
     {
         Back.SetActive(true);
+        Slider.SetActive(true);
         Play.SetActive(false);
         Options.SetActive(false);
         Quit.SetActive(false);
@@ -30,7 +32,15 @@ public class MainMenuScript : MonoBehaviour
     {
         Application.Quit();
         Debug.Log("quit");
+    }
 
+    public void BBack()
+    {
+        Play.SetActive(true);
+        Options.SetActive(true);
+        Quit.SetActive(true);
+        Back.SetActive(false);
+        Slider.SetActive(false);
     }
 
     public void PPlay()
