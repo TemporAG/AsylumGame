@@ -22,6 +22,8 @@ TagManager:
   - PurpleDoor
   - Spawner
   - FlashLight
+  - Vent1
+  - Vent2
   layers:
   - Default
   - TransparentFX

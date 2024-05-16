@@ -51,6 +51,11 @@ public class ItemPickupThrow : MonoBehaviour
     public GameObject ODoorO;
     public GameObject PDoorO;
 
+
+    public GameObject inroom;
+    public GameObject outroom;
+    public GameObject playera;
+
     void Start()
     {
         YDoorO.SetActive(false);
@@ -307,6 +312,27 @@ public class ItemPickupThrow : MonoBehaviour
             {
                 PDoorC.SetActive(false);
                 PDoorO.SetActive(true);
+            }
+        }
+
+        if (Physics.Raycast(origin, direction, out hit, range, layerMask))
+        {
+            if (hit.transform.CompareTag("Vent1"))
+            {
+                playera.GetComponent<CharacterController>().enabled = false;
+                playera.transform.position = inroom.transform.position;
+                playera.GetComponent<CharacterController>().enabled = true;
+            }   
+        }
+
+        if (Physics.Raycast(origin, direction, out hit, range, layerMask))
+        {
+            if (hit.transform.CompareTag("Vent2"))
+            {
+                playera.GetComponent<CharacterController>().enabled = false;
+                playera.transform.position = outroom.transform.position;
+                playera.GetComponent<CharacterController>().enabled = true;
+                Debug.Log("a");
             }
         }
     }
