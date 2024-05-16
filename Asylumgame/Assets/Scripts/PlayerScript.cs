@@ -42,6 +42,9 @@ public class PlayerScript : MonoBehaviour
     bool redKey;
     bool orangeKey;
     bool purpleKey;
+
+    public GameObject MHAl1;
+    public GameObject MHAl2;
     void Start()
     {
         controller = GetComponent<CharacterController>();
@@ -102,18 +105,28 @@ public class PlayerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (currentSanity < 10)
+        /*if (currentSanity < 10)
         {
             canGrow = true;
         }
-        else { canGrow = false; }
+        else { canGrow = false; }*/
 
         //if(canGrow) { Enlargement(); }
         //if(!canGrow) { DeEnlargement(); }
 
+        if(currentSanity < 30)
+        {
+            MHAl1.SetActive(true);
+            MHAl2.SetActive(true);
+        }
+        else
+        {
+            MHAl1.SetActive(false);
+            MHAl2.SetActive(false);
+        }
         if (currentSanity > 0f)
         {
-            currentSanity -= sValue * Time.deltaTime/2;
+            currentSanity -= sValue * Time.deltaTime;
             currentSanity = Mathf.Clamp(currentSanity, 0f, maxSanity);
         }
 
