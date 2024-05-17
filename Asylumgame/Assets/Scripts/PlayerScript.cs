@@ -9,7 +9,7 @@ public class PlayerScript : MonoBehaviour
     public Transform ttransform;
     //movement
     public float speed;
-    public float sprintSpeed = 5.0f;
+    public float sprintSpeed = 6f;
     public float walkSpeed = 3.0f;
     public float crouchSpeed = 2.0f;
     public float gravity = -9.81f;
@@ -25,7 +25,7 @@ public class PlayerScript : MonoBehaviour
     float sValue = 0.3f;
     float aValue = 0.09f;
     //sanity
-    public float maxSanity = 40f;
+    public float maxSanity = 50f;
     public float currentSanity;
     public Transform groundCheck;
     public float groundDistance = 0.4f;
@@ -45,6 +45,10 @@ public class PlayerScript : MonoBehaviour
 
     public GameObject MHAl1;
     public GameObject MHAl2;
+
+    public GameObject whisp;
+    public GameObject trex;
+    public GameObject backg;
     void Start()
     {
         controller = GetComponent<CharacterController>();
@@ -105,6 +109,24 @@ public class PlayerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(currentSanity <= 25)
+        {
+            trex.SetActive(true);
+        }
+        else if(currentSanity > 25){ trex.SetActive(false); }
+
+        if(currentSanity < 15)
+        {
+            whisp.SetActive(true);
+        }
+        else { whisp.SetActive(false); }
+
+        if (currentSanity > 15)
+        {
+            backg.SetActive(true);
+        }
+        else { backg.SetActive(false); }
+
         /*if (currentSanity < 10)
         {
             canGrow = true;
@@ -114,7 +136,7 @@ public class PlayerScript : MonoBehaviour
         //if(canGrow) { Enlargement(); }
         //if(!canGrow) { DeEnlargement(); }
 
-        if(currentSanity < 30)
+        if (currentSanity < 15)
         {
             MHAl1.SetActive(true);
             MHAl2.SetActive(true);
