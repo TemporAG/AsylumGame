@@ -303,7 +303,7 @@ public class ItemPickupThrow : MonoBehaviour
             {
                 ODoorC.SetActive(false);
                 ODoorO.SetActive(true);
-                SceneManager.LoadSceneAsync(1);
+                SceneManager.LoadSceneAsync(0);
             }
         }
 

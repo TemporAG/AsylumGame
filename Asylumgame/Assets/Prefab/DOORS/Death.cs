@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Death : MonoBehaviour
 {
@@ -20,8 +21,7 @@ public class Death : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            Application.Quit();
-            Debug.Log("aaaaa");
+            SceneManager.LoadSceneAsync(0);
         }
     }
 }
