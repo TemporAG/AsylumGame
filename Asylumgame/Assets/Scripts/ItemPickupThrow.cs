@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 
 public class ItemPickupThrow : MonoBehaviour
 {
@@ -303,6 +303,7 @@ public class ItemPickupThrow : MonoBehaviour
             {
                 ODoorC.SetActive(false);
                 ODoorO.SetActive(true);
+                SceneManager.LoadSceneAsync(1);
             }
         }
 

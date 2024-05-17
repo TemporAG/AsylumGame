@@ -18,7 +18,7 @@ public class PlayerScript : MonoBehaviour
     float enlargementHeight = 4.0f;
     Vector3 temp;
     //stamina
-    public float maxStamina = 30f;
+    public float maxStamina = 40f;
     public float currentStamina = 0f;
     //public UIScript staminaBar;
     float dValue = 10f;
